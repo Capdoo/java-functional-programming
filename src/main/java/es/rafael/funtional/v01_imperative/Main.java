@@ -1,6 +1,7 @@
 package es.rafael.funtional.v01_imperative;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -33,9 +34,9 @@ public class Main {
 
 
     private List<Integer> createList() {
-        //return Arrays.asList(0,1,2,3,5,8,13,21,34,55,89,144);
-        //Inmutable list
-        return List.of(0,1,2,3,5,8,13,21,34,55,89,144);
+        return Arrays.asList(0,1,2,3,5,8,13,21,34,55,89,144);
+        //Inmutable list: java 9
+        //return List.of(0,1,2,3,5,8,13,21,34,55,89,144);
     }
 
     private List<Integer> filterNumbers(List<Integer> numbers) {

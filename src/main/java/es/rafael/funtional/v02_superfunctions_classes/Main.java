@@ -4,6 +4,7 @@ import es.rafael.funtional.v02_superfunctions_classes.classes.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
 
@@ -13,33 +14,36 @@ public class Main {
 
     public Main(){
 
-        // 1. Create list numbers
-        //List<Integer> numbers = Superfunctions.provide(10, new MyRandom());
-        List<Integer> numbers = Superfunctions.provide(4, new Naturals());
-
+        //1. PROVIDER
+        //Create list numbers
+        List<Integer> numbers = Superfunctions.provide(8, new Naturals());
         System.out.println(numbers);
 
-        //2. Get/Filter only even/odd
+        //2. PREDICATE
+        //Get/Filter only even/odd
         List<Integer> filters = Superfunctions.filter(numbers,new OnlyEvens());
         System.out.println(filters);
 
-        //3. Square each number
-        //List<Integer> squares = Superfunctions.transform(filters, new Square());
+        //3. TRANSFORMER
+        //Square each number
         List<Integer> transformed = Superfunctions.transform(filters, new Square());
         System.out.println(transformed);
 
+        //4. CONSUMER
         //4.a. Show each squares and return List
-        List<Integer> result = Superfunctions.doAction(transformed, new Printer());
-
+        List<Integer> result = Superfunctions.consume1(transformed, new Printer());
         //4.b. Show each squares only
-        Superfunctions.consume(transformed, new Printer());
+        Superfunctions.consume2(transformed, new Printer());
 
+        //5. REDUCE
         //Get sum of squares
-        //int total = Superfunctions.reduce(result, 0, new Adder());
-        int total = Superfunctions.reduce(result, 1, new Multiplier());
+        System.out.println(result);
+        int total1 = Superfunctions.reduce(result, 0, new Adder());
+        int total2 = Superfunctions.reduce(result, 1, new Multiplier());
 
 
-        System.out.println("Reduction:"+total);
+        System.out.println("Reduction sum:"+total1);
+        System.out.println("Reduction prod:"+total2);
     }
 
 
